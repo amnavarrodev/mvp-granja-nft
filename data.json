@@ -1,0 +1,25 @@
+{
+    "gallinero": {
+        "maxGallinas": 5,
+        "precio": 100
+    },
+    "gallina": {
+        "precio": 50,
+        "produccionHuevosPorHora": 1,
+        "consumoAlimentoPorHora": 1,
+        "consumoAguaPorHora": 1
+    },
+    "alimento": {
+        "precio": 5
+    },
+    "agua": {
+        "precio": 3
+    },
+    "incubacion": {
+        "huevosRequeridos": 3,
+        "tiempoMinutos": 5
+    },
+    "mercado": {
+        "comision": 0.05
+    }
+}

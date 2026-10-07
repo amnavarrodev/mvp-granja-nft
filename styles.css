@@ -1,0 +1,447 @@
+/* Reset y variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg-primary: #0f1923;
+    --bg-secondary: #1a2a3a;
+    --bg-card: #1e3044;
+    --accent-gold: #f5c542;
+    --accent-green: #4ade80;
+    --accent-blue: #3b82f6;
+    --accent-orange: #f97316;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --border-radius: 16px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+#app {
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, transparent 100%);
+    padding: 12px 16px;
+}
+
+.resource-bar {
+    display: flex;
+    justify-content: space-around;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 10px 16px;
+    box-shadow: var(--shadow);
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.resource-icon {
+    font-size: 18px;
+}
+
+/* Vistas */
+.view {
+    display: none;
+    padding: 16px;
+}
+
+.view.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Granja */
+.farm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.farm-header h2 {
+    font-size: 18px;
+}
+
+.badge {
+    background: var(--bg-card);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.coop-visual {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coop-placeholder {
+    color: var(--text-secondary);
+}
+
+.coop-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Grid de gallinas */
+.chicken-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.chicken-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
+
+.chicken-card.happy {
+    border-color: var(--accent-green);
+}
+
+.chicken-card.hungry {
+    border-color: var(--accent-orange);
+    animation: pulse 1.5s infinite;
+}
+
+.chicken-card.ready {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(245, 197, 66, 0.3);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.chicken-emoji {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.chicken-stats {
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.action-btn {
+    background: var(--bg-card);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 8px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.action-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.action-btn span:first-child {
+    font-size: 20px;
+}
+
+.feed-btn:not(:disabled) { background: rgba(74, 222, 128, 0.15); }
+.water-btn:not(:disabled) { background: rgba(59, 130, 246, 0.15); }
+.clean-btn:not(:disabled) { background: rgba(249, 115, 22, 0.15); }
+
+/* Recoger huevos */
+.collect-section {
+    margin-top: 8px;
+}
+
+.collect-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-gold), #d4a520);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(245, 197, 66, 0.3);
+}
+
+.collect-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.collect-btn:disabled {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    box-shadow: none;
+}
+
+/* Mercado */
+.market-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.market-item {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.market-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.market-item-icon {
+    font-size: 28px;
+}
+
+.market-item-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.market-item-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.buy-btn {
+    background: var(--accent-green);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #0f1923;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.buy-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.buy-btn:disabled {
+    opacity: 0.4;
+}
+
+.buy-btn .price {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+/* Incubadora */
+.incubator-info {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}
+
+.hint {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.incubator-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.slot {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    border: 2px dashed var(--text-secondary);
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slot.active {
+    border-style: solid;
+    border-color: var(--accent-gold);
+}
+
+.slot-emoji {
+    font-size: 24px;
+}
+
+.slot-timer {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.primary-btn {
+    width: 100%;
+    background: var(--accent-blue);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.primary-btn:disabled {
+    opacity: 0.4;
+}
+
+/* Navegación inferior */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: var(--bg-secondary);
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 16px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 12px;
+}
+
+.nav-btn span:first-child {
+    font-size: 22px;
+}
+
+.nav-label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.nav-btn.active {
+    color: var(--accent-gold);
+    background: rgba(245, 197, 66, 0.1);
+}
+
+/* Notificaciones toast */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+    z-index: 200;
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--accent-green);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.error {
+    border-left-color: #ef4444;
+}

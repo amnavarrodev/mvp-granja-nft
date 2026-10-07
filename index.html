@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🐔 Mi Granja</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Cabecera con recursos -->
+        <header class="header">
+            <div class="resource-bar">
+                <div class="resource-item">
+                    <span class="resource-icon">🪙</span>
+                    <span id="token-balance">0</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">🥚</span>
+                    <span id="egg-balance">0</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">🌾</span>
+                    <span id="feed-balance">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Vista principal: Granja -->
+        <main id="view-farm" class="view active">
+            <div class="farm-header">
+                <h2>Gallinero Nivel 1</h2>
+                <span id="chicken-count" class="badge">0/5 gallinas</span>
+            </div>
+
+            <div class="coop-visual" id="coop-visual">
+                <div class="coop-placeholder">
+                    <span class="coop-icon">🏠</span>
+                    <p>Compra tu primer gallinero</p>
+                </div>
+            </div>
+
+            <div class="chicken-grid" id="chicken-grid">
+                <!-- Aquí se renderizan las gallinas -->
+            </div>
+
+            <div class="action-buttons">
+                <button id="btn-feed" class="action-btn feed-btn" disabled>
+                    <span>🌾</span> Alimentar
+                </button>
+                <button id="btn-water" class="action-btn water-btn" disabled>
+                    <span>💧</span> Dar Agua
+                </button>
+                <button id="btn-clean" class="action-btn clean-btn" disabled>
+                    <span>🧹</span> Limpiar
+                </button>
+            </div>
+
+            <div class="collect-section">
+                <button id="btn-collect" class="collect-btn" disabled>
+                    🥚 Recoger Huevos (<span id="pending-eggs">0</span>)
+                </button>
+            </div>
+        </main>
+
+        <!-- Vista Mercado -->
+        <main id="view-market" class="view">
+            <h2>🛒 Mercado</h2>
+            <div class="market-grid" id="market-grid">
+                <!-- Aquí se renderizan los items del mercado -->
+            </div>
+        </main>
+
+        <!-- Vista Incubadora -->
+        <main id="view-incubator" class="view">
+            <h2>🐣 Incubadora</h2>
+            <div class="incubator-info">
+                <p>Convierte huevos en gallinas nuevas.</p>
+                <p class="hint">Necesitas 3 huevos por incubación.</p>
+            </div>
+            <div class="incubator-slots" id="incubator-slots">
+                <!-- Slots de incubación -->
+            </div>
+            <button id="btn-incubate" class="primary-btn" disabled>
+                🥚 Incubar Huevo
+            </button>
+        </main>
+
+        <!-- Navegación inferior -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-view="farm">
+                <span>🏠</span>
+                <span class="nav-label">Granja</span>
+            </button>
+            <button class="nav-btn" data-view="market">
+                <span>🛒</span>
+                <span class="nav-label">Mercado</span>
+            </button>
+            <button class="nav-btn" data-view="incubator">
+                <span>🐣</span>
+                <span class="nav-label">Incubar</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
